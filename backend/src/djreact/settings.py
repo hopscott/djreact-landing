@@ -13,8 +13,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -25,7 +24,10 @@ SECRET_KEY = 'p&c8h+0!kxdxl4+tc^o$qd!nhdot%^+b_r51dqtj3j=nn=w=69'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'scottwillis.pythonanywhere.com',
+    '127.0.0.1'
+]
 
 
 # Application definition
@@ -61,7 +63,7 @@ ROOT_URLCONF = 'djreact.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'frontend', 'gui')],  #Look, we have added the root folder of frontend here
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -74,6 +76,16 @@ TEMPLATES = [
     },
 ]
 
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/3.0/howto/static-files/
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "backend", "static", "src")
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "frontend", "gui", "build", "static"),  # update the STATICFILES_DIRS
+)
+
+
 WSGI_APPLICATION = 'djreact.wsgi.application'
 
 
@@ -83,7 +95,7 @@ WSGI_APPLICATION = 'djreact.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'backend', 'src', 'db.sqlite3'),
     }
 }
 
@@ -121,11 +133,7 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.0/howto/static-files/
-
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
+# REST and CORS settings
 
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,

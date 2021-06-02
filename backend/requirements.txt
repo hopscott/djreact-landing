@@ -54,7 +54,7 @@ six==1.14.0
 sqlparse==0.3.1
 svgwrite==1.4
 tskit==0.2.3
-urllib3==1.25.8
+urllib3==1.26.5
 virtualenv==20.0.18
 virtualenv-clone==0.5.4
 wcwidth==0.1.9

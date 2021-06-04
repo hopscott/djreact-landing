@@ -10,7 +10,7 @@ cloudant==2.12.0
 DateTime==4.3
 distlib==0.3.0
 djangify==1.0.0
-Django==3.0.5
+Django==3.1.9
 django-cors-headers==3.2.1
 django-filter==2.2.0
 djangorestframework==3.11.0
